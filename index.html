@@ -1,0 +1,2948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Sanskrit Learning App</title>
+
+
+<style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, "Noto Sans Devanagari", sans-serif;
+    background: #f7f2eb;
+    color: #33251f;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+    background: #542817;
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.logo span {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-btn {
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 10px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+    background: #bd7436;
+}
+
+
+/* =====================================================
+   PAGE SECTIONS
+===================================================== */
+
+.page-section {
+    display: none;
+    min-height: 650px;
+    padding: 45px 7%;
+}
+
+.active-section {
+    display: block;
+}
+
+.page-title {
+    text-align: center;
+    color: #542817;
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.description {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 35px;
+    color: #6d625b;
+}
+
+
+/* =====================================================
+   HOME HERO
+===================================================== */
+
+.hero {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px;
+    min-height: 370px;
+    border-radius: 20px;
+
+    background: linear-gradient(
+        135deg,
+        #542817,
+        #a45e2d
+    );
+
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 5px;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin: 5px 0 15px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+}
+
+.om {
+    font-size: 160px;
+    margin-left: 30px;
+}
+
+.main-btn {
+    padding: 13px 25px;
+    border: none;
+    border-radius: 7px;
+    background: white;
+    color: #542817;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.main-btn:hover {
+    background: #f0dfd0;
+}
+
+
+/* =====================================================
+   HOME CARDS
+===================================================== */
+
+.section-heading {
+    text-align: center;
+    color: #542817;
+    margin: 45px 0 25px;
+}
+
+.home-grid {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.home-card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.08);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.home-card:hover {
+    transform: translateY(-6px);
+}
+
+.icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.home-card h3 {
+    color: #542817;
+    margin-bottom: 8px;
+}
+
+
+/* =====================================================
+   VOWELS
+===================================================== */
+
+.sound-grid {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.sound-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.07);
+}
+
+.letter {
+    font-size: 60px;
+    color: #a45e2d;
+    font-weight: bold;
+}
+
+.sound-card h3 {
+    color: #542817;
+}
+
+.sound-card button {
+    background: #542817;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.sound-card button:hover {
+    background: #a45e2d;
+}
+
+
+/* =====================================================
+   CONSONANT VARGA
+===================================================== */
+
+.varga {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.07);
+}
+
+.varga h2 {
+    color: #542817;
+    margin-bottom: 5px;
+}
+
+.place {
+    background: #f0dfd0;
+    padding: 9px;
+    border-radius: 7px;
+    margin: 10px 0 20px;
+}
+
+.consonant-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(5, 1fr);
+    gap: 15px;
+}
+
+.consonant-grid > div {
+    background: #faf7f3;
+    text-align: center;
+    padding: 18px;
+    border-radius: 10px;
+}
+
+.consonant-grid b {
+    font-size: 48px;
+    color: #a45e2d;
+}
+
+.consonant-grid p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.small-speak {
+    border: none;
+    background: #542817;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   ARTICULATION
+===================================================== */
+
+.art-grid {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.art-card {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    text-align: center;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.07);
+}
+
+.art-icon {
+    font-size: 45px;
+    margin-bottom: 5px;
+}
+
+.art-card h2 {
+    color: #a45e2d;
+    font-size: 32px;
+}
+
+.art-card h3 {
+    color: #542817;
+    margin-bottom: 10px;
+}
+
+.art-card p {
+    margin: 5px 0;
+}
+
+.letters {
+    font-size: 28px;
+    background: #f0dfd0;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 7px;
+}
+
+
+/* =====================================================
+   IDENTIFY
+===================================================== */
+
+.identify-box {
+    max-width: 850px;
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.08);
+}
+
+.identify-box h2 {
+    color: #542817;
+    margin-bottom: 15px;
+}
+
+#consonantInput {
+    width: 220px;
+    padding: 12px;
+
+    font-size: 30px;
+
+    text-align: center;
+
+    border:
+        2px solid #c9a995;
+
+    border-radius: 7px;
+
+    outline: none;
+}
+
+#consonantInput:focus {
+    border-color: #a45e2d;
+}
+
+.identify-btn,
+.clear-btn,
+.mic-btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 15px;
+}
+
+.identify-btn {
+    background: #542817;
+}
+
+.clear-btn {
+    background: #777;
+}
+
+.mic-btn {
+    background: #a45e2d;
+}
+
+.identify-btn:hover {
+    background: #a45e2d;
+}
+
+.clear-btn:hover {
+    background: #555;
+}
+
+.mic-btn:hover {
+    background: #542817;
+}
+
+#speechStatus {
+    margin: 12px 0;
+    color: #6d625b;
+}
+
+.result {
+    margin-top: 25px;
+    padding: 25px;
+
+    border:
+        2px solid #dbc5b5;
+
+    border-radius: 10px;
+
+    background: #faf7f3;
+}
+
+.result-letter {
+    font-size: 70px;
+    color: #a45e2d;
+    font-weight: bold;
+}
+
+.result-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+.result-item {
+    background: white;
+    padding: 15px;
+    border-radius: 7px;
+}
+
+.result-item strong {
+    display: block;
+    color: #542817;
+    margin-bottom: 3px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    background: #542817;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+footer h3 {
+    margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.info-table th,
+.info-table td {
+    border: 1px solid #dbc5b5;
+    padding: 10px;
+    text-align: center;
+}
+
+.info-table th {
+    background: #542817;
+    color: white;
+}
+
+.info-table td {
+    background: #fff;
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE DESIGN
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .home-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .sound-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .art-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =====================================================
+   PHONE SCREEN
+===================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+    }
+
+
+    /* Header */
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px 10px;
+    }
+
+    .logo {
+        font-size: 25px;
+    }
+
+    nav {
+        width: 100%;
+        gap: 6px;
+    }
+
+    .nav-btn {
+        font-size: 13px;
+        padding: 8px 9px;
+    }
+
+
+    /* Pages */
+
+    .page-section {
+        padding: 25px 15px;
+        min-height: 500px;
+    }
+
+    .page-title {
+        font-size: 30px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+        line-height: 1.2;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .om {
+        font-size: 90px;
+        margin: 20px 0 0;
+    }
+
+
+    /* Home */
+
+    .home-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-card {
+        padding: 22px;
+    }
+
+
+    /* Vowels */
+
+    .sound-grid {
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 12px;
+    }
+
+    .sound-card {
+        padding: 15px 8px;
+    }
+
+    .letter {
+        font-size: 48px;
+    }
+
+    .sound-card button {
+        font-size: 12px;
+        padding: 8px 8px;
+    }
+
+
+    /* Consonants */
+
+    .varga {
+        padding: 18px 12px;
+    }
+
+    .varga h2 {
+        font-size: 22px;
+    }
+
+    .place {
+        font-size: 13px;
+    }
+
+    .consonant-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 10px;
+    }
+
+    .consonant-grid > div {
+        padding: 12px;
+    }
+
+    .consonant-grid b {
+        font-size: 42px;
+    }
+
+
+    /* Articulation */
+
+    .art-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .art-card {
+        padding: 22px;
+    }
+
+
+    /* Identify */
+
+    .identify-box {
+        padding: 22px 15px;
+    }
+
+    #consonantInput {
+        width: 100%;
+        max-width: 220px;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-letter {
+        font-size: 60px;
+    }
+
+
+    /* Table */
+
+    .info-table {
+        font-size: 12px;
+    }
+
+    .info-table th,
+    .info-table td {
+        padding: 6px;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .nav-btn {
+        font-size: 12px;
+        padding: 7px;
+    }
+
+    .sound-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+    <div class="logo">
+
+        संस्कृतम्
+
+        <span>
+            Sanskrit Learning App
+        </span>
+
+    </div>
+
+
+    <nav>
+
+        <button
+            class="nav-btn active"
+            onclick="showSection('home')">
+
+            Home
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            onclick="showSection('vowels')">
+
+            Sanskrit Vowels
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            onclick="showSection('consonants')">
+
+            Sanskrit Consonants
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            onclick="showSection('articulation')">
+
+            Articulation Groups
+
+        </button>
+
+
+        <button
+            class="nav-btn"
+            onclick="showSection('identify')">
+
+            Identify Articulation
+
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HOME PAGE
+===================================================== -->
+
+<section
+    id="home"
+    class="page-section active-section">
+
+
+    <div class="hero">
+
+
+        <div class="hero-content">
+
+            <h1>
+                Sanskrit Learning App
+            </h1>
+
+
+            <h2>
+                संस्कृतं शिक्षामः
+            </h2>
+
+
+            <p>
+
+                Learn Sanskrit vowels,
+                consonants, pronunciation,
+                Varga classification and
+                places of articulation.
+
+            </p>
+
+
+            <button
+                class="main-btn"
+                onclick="showSection('vowels')">
+
+                Start Learning
+
+            </button>
+
+        </div>
+
+
+        <div class="om">
+
+            ॐ
+
+        </div>
+
+
+    </div>
+
+
+
+    <h2 class="section-heading">
+
+        Explore Sanskrit
+
+    </h2>
+
+
+
+    <div class="home-grid">
+
+
+        <!-- VOWELS CARD -->
+
+        <div
+            class="home-card"
+            onclick="showSection('vowels')">
+
+
+            <div class="icon">
+
+                अ
+
+            </div>
+
+
+            <h3>
+
+                Sanskrit Vowels
+
+            </h3>
+
+
+            <p>
+
+                Learn Sanskrit vowels
+                and their pronunciation.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- CONSONANTS CARD -->
+
+        <div
+            class="home-card"
+            onclick="showSection('consonants')">
+
+
+            <div class="icon">
+
+                क
+
+            </div>
+
+
+            <h3>
+
+                Sanskrit Consonants
+
+            </h3>
+
+
+            <p>
+
+                Learn consonants and
+                their Varga groups.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- ARTICULATION CARD -->
+
+        <div
+            class="home-card"
+            onclick="showSection('articulation')">
+
+
+            <div class="icon">
+
+                👄
+
+            </div>
+
+
+            <h3>
+
+                Articulation Groups
+
+            </h3>
+
+
+            <p>
+
+                Learn where Sanskrit
+                sounds are produced.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- IDENTIFY CARD -->
+
+        <div
+            class="home-card"
+            onclick="showSection('identify')">
+
+
+            <div class="icon">
+
+                🎤
+
+            </div>
+
+
+            <h3>
+
+                Identify Articulation
+
+            </h3>
+
+
+            <p>
+
+                Type or speak a consonant
+                and identify its group.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     VOWELS PAGE
+===================================================== -->
+
+<section
+    id="vowels"
+    class="page-section">
+
+
+    <h1 class="page-title">
+
+        Sanskrit Vowels
+
+    </h1>
+
+
+    <p class="description">
+
+        स्वराः (Svarāḥ) are Sanskrit vowels.
+        Click 🔊 to hear the pronunciation.
+
+    </p>
+
+
+
+    <div class="sound-grid">
+
+
+        <div class="sound-card">
+
+            <div class="letter">अ</div>
+
+            <h3>a</h3>
+
+            <p>Short a</p>
+
+            <button onclick="speakText('अ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">आ</div>
+
+            <h3>ā</h3>
+
+            <p>Long a</p>
+
+            <button onclick="speakText('आ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">इ</div>
+
+            <h3>i</h3>
+
+            <p>Short i</p>
+
+            <button onclick="speakText('इ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">ई</div>
+
+            <h3>ī</h3>
+
+            <p>Long i</p>
+
+            <button onclick="speakText('ई')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">उ</div>
+
+            <h3>u</h3>
+
+            <p>Short u</p>
+
+            <button onclick="speakText('उ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">ऊ</div>
+
+            <h3>ū</h3>
+
+            <p>Long u</p>
+
+            <button onclick="speakText('ऊ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">ऋ</div>
+
+            <h3>ṛ</h3>
+
+            <p>Vocalic r</p>
+
+            <button onclick="speakText('ऋ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">ए</div>
+
+            <h3>e</h3>
+
+            <p>e sound</p>
+
+            <button onclick="speakText('ए')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">ऐ</div>
+
+            <h3>ai</h3>
+
+            <p>ai sound</p>
+
+            <button onclick="speakText('ऐ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">ओ</div>
+
+            <h3>o</h3>
+
+            <p>o sound</p>
+
+            <button onclick="speakText('ओ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+        <div class="sound-card">
+
+            <div class="letter">औ</div>
+
+            <h3>au</h3>
+
+            <p>au sound</p>
+
+            <button onclick="speakText('औ')">
+                🔊 Pronounce
+            </button>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONSONANTS PAGE
+===================================================== -->
+
+<section
+    id="consonants"
+    class="page-section">
+
+
+    <h1 class="page-title">
+
+        Sanskrit Consonants
+
+    </h1>
+
+
+    <p class="description">
+
+        व्यञ्जनानि (Vyañjanāni) are Sanskrit
+        consonants arranged into Varga groups.
+
+    </p>
+
+
+
+    <!-- KA VARGA -->
+
+    <div class="varga">
+
+        <h2>
+            क-वर्ग — Ka Varga
+        </h2>
+
+        <p class="place">
+
+            कण्ठ्य — Kaṇṭhya — Guttural —
+            Throat
+
+        </p>
+
+
+        <div class="consonant-grid">
+
+
+            <div>
+                <b>क</b>
+                <p>ka</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('क')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ख</b>
+                <p>kha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ख')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ग</b>
+                <p>ga</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ग')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>घ</b>
+                <p>gha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('घ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ङ</b>
+                <p>ṅa</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ङ')">
+                    🔊
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CA VARGA -->
+
+    <div class="varga">
+
+        <h2>
+            च-वर्ग — Ca Varga
+        </h2>
+
+        <p class="place">
+
+            तालव्य — Tālavya — Palatal —
+            Palate
+
+        </p>
+
+
+        <div class="consonant-grid">
+
+
+            <div>
+                <b>च</b>
+                <p>ca</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('च')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>छ</b>
+                <p>cha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('छ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ज</b>
+                <p>ja</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ज')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>झ</b>
+                <p>jha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('झ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ञ</b>
+                <p>ña</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ञ')">
+                    🔊
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TA RETROFLEX -->
+
+    <div class="varga">
+
+        <h2>
+            ट-वर्ग — Ṭa Varga
+        </h2>
+
+        <p class="place">
+
+            मूर्धन्य — Mūrdhanya —
+            Retroflex — Roof of Mouth
+
+        </p>
+
+
+        <div class="consonant-grid">
+
+
+            <div>
+                <b>ट</b>
+                <p>ṭa</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ट')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ठ</b>
+                <p>ṭha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ठ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ड</b>
+                <p>ḍa</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ड')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ढ</b>
+                <p>ḍha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ढ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ण</b>
+                <p>ṇa</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ण')">
+                    🔊
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TA VARGA -->
+
+    <div class="varga">
+
+        <h2>
+            त-वर्ग — Ta Varga
+        </h2>
+
+        <p class="place">
+
+            दन्त्य — Dantya — Dental —
+            Teeth
+
+        </p>
+
+
+        <div class="consonant-grid">
+
+
+            <div>
+                <b>त</b>
+                <p>ta</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('त')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>थ</b>
+                <p>tha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('थ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>द</b>
+                <p>da</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('द')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ध</b>
+                <p>dha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ध')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>न</b>
+                <p>na</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('न')">
+                    🔊
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- PA VARGA -->
+
+    <div class="varga">
+
+        <h2>
+            प-वर्ग — Pa Varga
+        </h2>
+
+        <p class="place">
+
+            ओष्ठ्य — Oṣṭhya — Labial —
+            Lips
+
+        </p>
+
+
+        <div class="consonant-grid">
+
+
+            <div>
+                <b>प</b>
+                <p>pa</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('प')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>फ</b>
+                <p>pha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('फ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>ब</b>
+                <p>ba</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('ब')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>भ</b>
+                <p>bha</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('भ')">
+                    🔊
+                </button>
+            </div>
+
+
+            <div>
+                <b>म</b>
+                <p>ma</p>
+                <button
+                    class="small-speak"
+                    onclick="speakText('म')">
+                    🔊
+                </button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ARTICULATION PAGE
+===================================================== -->
+
+<section
+    id="articulation"
+    class="page-section">
+
+
+    <h1 class="page-title">
+
+        Articulation Groups
+
+    </h1>
+
+
+    <p class="description">
+
+        स्थानम् (Sthānam) means the place
+        where a Sanskrit sound is produced.
+
+    </p>
+
+
+
+    <div class="art-grid">
+
+
+        <!-- GUTTURAL -->
+
+        <div class="art-card">
+
+            <div class="art-icon">
+                🗣️
+            </div>
+
+            <h2>
+                कण्ठ्य
+            </h2>
+
+            <h3>
+                Kaṇṭhya — Guttural
+            </h3>
+
+            <p>
+                📍 Throat
+            </p>
+
+            <div class="letters">
+                क ख ग घ ङ
+            </div>
+
+            <p>
+                <b>Varga:</b>
+                क-वर्ग — Ka Varga
+            </p>
+
+        </div>
+
+
+
+        <!-- PALATAL -->
+
+        <div class="art-card">
+
+            <div class="art-icon">
+                👅
+            </div>
+
+            <h2>
+                तालव्य
+            </h2>
+
+            <h3>
+                Tālavya — Palatal
+            </h3>
+
+            <p>
+                📍 Palate
+            </p>
+
+            <div class="letters">
+                च छ ज झ ञ
+            </div>
+
+            <p>
+                <b>Varga:</b>
+                च-वर्ग — Ca Varga
+            </p>
+
+        </div>
+
+
+
+        <!-- RETROFLEX -->
+
+        <div class="art-card">
+
+            <div class="art-icon">
+                👅
+            </div>
+
+            <h2>
+                मूर्धन्य
+            </h2>
+
+            <h3>
+                Mūrdhanya — Retroflex
+            </h3>
+
+            <p>
+                📍 Roof of Mouth
+            </p>
+
+            <div class="letters">
+                ट ठ ड ढ ण
+            </div>
+
+            <p>
+                <b>Varga:</b>
+                ट-वर्ग — Ṭa Varga
+            </p>
+
+        </div>
+
+
+
+        <!-- DENTAL -->
+
+        <div class="art-card">
+
+            <div class="art-icon">
+                🦷
+            </div>
+
+            <h2>
+                दन्त्य
+            </h2>
+
+            <h3>
+                Dantya — Dental
+            </h3>
+
+            <p>
+                📍 Teeth
+            </p>
+
+            <div class="letters">
+                त थ द ध न
+            </div>
+
+            <p>
+                <b>Varga:</b>
+                त-वर्ग — Ta Varga
+            </p>
+
+        </div>
+
+
+
+        <!-- LABIAL -->
+
+        <div class="art-card">
+
+            <div class="art-icon">
+                👄
+            </div>
+
+            <h2>
+                ओष्ठ्य
+            </h2>
+
+            <h3>
+                Oṣṭhya — Labial
+            </h3>
+
+            <p>
+                📍 Lips
+            </p>
+
+            <div class="letters">
+                प फ ब भ म
+            </div>
+
+            <p>
+                <b>Varga:</b>
+                प-वर्ग — Pa Varga
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     IDENTIFY PAGE
+===================================================== -->
+
+<section
+    id="identify"
+    class="page-section">
+
+
+    <h1 class="page-title">
+
+        Identify Articulation Group
+
+    </h1>
+
+
+    <p class="description">
+
+        Type a Sanskrit consonant to find
+        its Varga, articulation and place
+        of articulation.
+
+    </p>
+
+
+
+    <div class="identify-box">
+
+
+        <h2>
+
+            ⌨️ Type a Consonant
+
+        </h2>
+
+
+        <input
+            type="text"
+            id="consonantInput"
+            placeholder="क"
+            maxlength="1"
+            autocomplete="off"
+        >
+
+
+        <br>
+
+
+        <button
+            class="identify-btn"
+            onclick="identifyConsonant()">
+
+            🔎 Identify
+
+        </button>
+
+
+        <button
+            class="clear-btn"
+            onclick="clearResult()">
+
+            Clear
+
+        </button>
+
+
+
+        <hr style="margin:30px 0;">
+
+
+
+        <h2>
+
+            🎤 Speak a Consonant
+
+        </h2>
+
+
+        <button
+            class="mic-btn"
+            onclick="startSpeechRecognition()">
+
+            🎤 Start Listening
+
+        </button>
+
+
+        <p id="speechStatus">
+
+            Microphone not started.
+
+        </p>
+
+
+
+        <div
+            id="result"
+            class="result">
+
+            <h2>
+                Identification Result
+            </h2>
+
+            <p>
+                Enter a Sanskrit consonant above.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <h3>
+        संस्कृतम् — Sanskrit Learning App
+    </h3>
+
+    <p>
+        Learn • Pronounce • Identify • Preserve
+    </p>
+
+    <p>
+        © 2026 Sanskrit Learning Project
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showSection(sectionId) {
+
+    const sections =
+        document.querySelectorAll(".page-section");
+
+
+    sections.forEach(function(section) {
+
+        section.classList.remove(
+            "active-section"
+        );
+
+    });
+
+
+    const selectedSection =
+        document.getElementById(sectionId);
+
+
+    if (selectedSection) {
+
+        selectedSection.classList.add(
+            "active-section"
+        );
+
+    }
+
+
+    const buttons =
+        document.querySelectorAll(".nav-btn");
+
+
+    buttons.forEach(function(button) {
+
+        button.classList.remove("active");
+
+    });
+
+
+    /*
+       Find the button corresponding
+       to the selected section.
+    */
+
+    buttons.forEach(function(button) {
+
+        const buttonText =
+            button.innerText.toLowerCase();
+
+
+        if (
+            sectionId === "home" &&
+            buttonText === "home"
+        ) {
+
+            button.classList.add("active");
+
+        }
+
+
+        if (
+            sectionId === "vowels" &&
+            buttonText.includes("vowels")
+        ) {
+
+            button.classList.add("active");
+
+        }
+
+
+        if (
+            sectionId === "consonants" &&
+            buttonText.includes("consonants")
+        ) {
+
+            button.classList.add("active");
+
+        }
+
+
+        if (
+            sectionId === "articulation" &&
+            buttonText.includes("articulation groups")
+        ) {
+
+            button.classList.add("active");
+
+        }
+
+
+        if (
+            sectionId === "identify" &&
+            buttonText.includes("identify")
+        ) {
+
+            button.classList.add("active");
+
+        }
+
+    });
+
+
+    window.scrollTo(0, 0);
+
+}
+
+
+
+/* =====================================================
+   PRONUNCIATION
+===================================================== */
+
+function speakText(text) {
+
+    if (!("speechSynthesis" in window)) {
+
+        alert(
+            "Speech synthesis is not supported by this browser."
+        );
+
+        return;
+
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const speech =
+        new SpeechSynthesisUtterance(text);
+
+
+    /*
+       Hindi voice is used because
+       Sanskrit voices may not be
+       available on every device.
+    */
+
+    speech.lang = "hi-IN";
+
+    speech.rate = 0.75;
+
+    speech.pitch = 1;
+
+
+    window.speechSynthesis.speak(speech);
+
+}
+
+
+
+/* =====================================================
+   CONSONANT DATABASE
+===================================================== */
+
+const consonants = {
+
+
+    /* ================= KA VARGA ================= */
+
+    "क": {
+        transliteration: "ka",
+        varga: "क-वर्ग",
+        vargaEnglish: "Ka Varga",
+        articulation: "कण्ठ्य",
+        articulationEnglish: "Kaṇṭhya — Guttural",
+        place: "Throat"
+    },
+
+    "ख": {
+        transliteration: "kha",
+        varga: "क-वर्ग",
+        vargaEnglish: "Ka Varga",
+        articulation: "कण्ठ्य",
+        articulationEnglish: "Kaṇṭhya — Guttural",
+        place: "Throat"
+    },
+
+    "ग": {
+        transliteration: "ga",
+        varga: "क-वर्ग",
+        vargaEnglish: "Ka Varga",
+        articulation: "कण्ठ्य",
+        articulationEnglish: "Kaṇṭhya — Guttural",
+        place: "Throat"
+    },
+
+    "घ": {
+        transliteration: "gha",
+        varga: "क-वर्ग",
+        vargaEnglish: "Ka Varga",
+        articulation: "कण्ठ्य",
+        articulationEnglish: "Kaṇṭhya — Guttural",
+        place: "Throat"
+    },
+
+    "ङ": {
+        transliteration: "ṅa",
+        varga: "क-वर्ग",
+        vargaEnglish: "Ka Varga",
+        articulation: "कण्ठ्य",
+        articulationEnglish: "Kaṇṭhya — Guttural",
+        place: "Throat"
+    },
+
+
+    /* ================= CA VARGA ================= */
+
+    "च": {
+        transliteration: "ca",
+        varga: "च-वर्ग",
+        vargaEnglish: "Ca Varga",
+        articulation: "तालव्य",
+        articulationEnglish: "Tālavya — Palatal",
+        place: "Palate"
+    },
+
+    "छ": {
+        transliteration: "cha",
+        varga: "च-वर्ग",
+        vargaEnglish: "Ca Varga",
+        articulation: "तालव्य",
+        articulationEnglish: "Tālavya — Palatal",
+        place: "Palate"
+    },
+
+    "ज": {
+        transliteration: "ja",
+        varga: "च-वर्ग",
+        vargaEnglish: "Ca Varga",
+        articulation: "तालव्य",
+        articulationEnglish: "Tālavya — Palatal",
+        place: "Palate"
+    },
+
+    "झ": {
+        transliteration: "jha",
+        varga: "च-वर्ग",
+        vargaEnglish: "Ca Varga",
+        articulation: "तालव्य",
+        articulationEnglish: "Tālavya — Palatal",
+        place: "Palate"
+    },
+
+    "ञ": {
+        transliteration: "ña",
+        varga: "च-वर्ग",
+        vargaEnglish: "Ca Varga",
+        articulation: "तालव्य",
+        articulationEnglish: "Tālavya — Palatal",
+        place: "Palate"
+    },
+
+
+    /* ================= ṬA VARGA ================= */
+
+    "ट": {
+        transliteration: "ṭa",
+        varga: "ट-वर्ग",
+        vargaEnglish: "Ṭa Varga",
+        articulation: "मूर्धन्य",
+        articulationEnglish: "Mūrdhanya — Retroflex",
+        place: "Roof of Mouth"
+    },
+
+    "ठ": {
+        transliteration: "ṭha",
+        varga: "ट-वर्ग",
+        vargaEnglish: "Ṭa Varga",
+        articulation: "मूर्धन्य",
+        articulationEnglish: "Mūrdhanya — Retroflex",
+        place: "Roof of Mouth"
+    },
+
+    "ड": {
+        transliteration: "ḍa",
+        varga: "ट-वर्ग",
+        vargaEnglish: "Ṭa Varga",
+        articulation: "मूर्धन्य",
+        articulationEnglish: "Mūrdhanya — Retroflex",
+        place: "Roof of Mouth"
+    },
+
+    "ढ": {
+        transliteration: "ḍha",
+        varga: "ट-वर्ग",
+        vargaEnglish: "Ṭa Varga",
+        articulation: "मूर्धन्य",
+        articulationEnglish: "Mūrdhanya — Retroflex",
+        place: "Roof of Mouth"
+    },
+
+    "ण": {
+        transliteration: "ṇa",
+        varga: "ट-वर्ग",
+        vargaEnglish: "Ṭa Varga",
+        articulation: "मूर्धन्य",
+        articulationEnglish: "Mūrdhanya — Retroflex",
+        place: "Roof of Mouth"
+    },
+
+
+    /* ================= TA VARGA ================= */
+
+    "त": {
+        transliteration: "ta",
+        varga: "त-वर्ग",
+        vargaEnglish: "Ta Varga",
+        articulation: "दन्त्य",
+        articulationEnglish: "Dantya — Dental",
+        place: "Teeth"
+    },
+
+    "थ": {
+        transliteration: "tha",
+        varga: "त-वर्ग",
+        vargaEnglish: "Ta Varga",
+        articulation: "दन्त्य",
+        articulationEnglish: "Dantya — Dental",
+        place: "Teeth"
+    },
+
+    "द": {
+        transliteration: "da",
+        varga: "त-वर्ग",
+        vargaEnglish: "Ta Varga",
+        articulation: "दन्त्य",
+        articulationEnglish: "Dantya — Dental",
+        place: "Teeth"
+    },
+
+    "ध": {
+        transliteration: "dha",
+        varga: "त-वर्ग",
+        vargaEnglish: "Ta Varga",
+        articulation: "दन्त्य",
+        articulationEnglish: "Dantya — Dental",
+        place: "Teeth"
+    },
+
+    "न": {
+        transliteration: "na",
+        varga: "त-वर्ग",
+        vargaEnglish: "Ta Varga",
+        articulation: "दन्त्य",
+        articulationEnglish: "Dantya — Dental",
+        place: "Teeth"
+    },
+
+
+    /* ================= PA VARGA ================= */
+
+    "प": {
+        transliteration: "pa",
+        varga: "प-वर्ग",
+        vargaEnglish: "Pa Varga",
+        articulation: "ओष्ठ्य",
+        articulationEnglish: "Oṣṭhya — Labial",
+        place: "Lips"
+    },
+
+    "फ": {
+        transliteration: "pha",
+        varga: "प-वर्ग",
+        vargaEnglish: "Pa Varga",
+        articulation: "ओष्ठ्य",
+        articulationEnglish: "Oṣṭhya — Labial",
+        place: "Lips"
+    },
+
+    "ब": {
+        transliteration: "ba",
+        varga: "प-वर्ग",
+        vargaEnglish: "Pa Varga",
+        articulation: "ओष्ठ्य",
+        articulationEnglish: "Oṣṭhya — Labial",
+        place: "Lips"
+    },
+
+    "भ": {
+        transliteration: "bha",
+        varga: "प-वर्ग",
+        vargaEnglish: "Pa Varga",
+        articulation: "ओष्ठ्य",
+        articulationEnglish: "Oṣṭhya — Labial",
+        place: "Lips"
+    },
+
+    "म": {
+        transliteration: "ma",
+        varga: "प-वर्ग",
+        vargaEnglish: "Pa Varga",
+        articulation: "ओष्ठ्य",
+        articulationEnglish: "Oṣṭhya — Labial",
+        place: "Lips"
+    },
+
+
+    /* ================= SEMI-VOWELS ================= */
+
+    "य": {
+        transliteration: "ya",
+        varga: "अन्तःस्थ",
+        vargaEnglish: "Antaḥstha",
+        articulation: "तालव्य",
+        articulationEnglish: "Tālavya — Palatal",
+        place: "Palate"
+    },
+
+    "र": {
+        transliteration: "ra",
+        varga: "अन्तःस्थ",
+        vargaEnglish: "Antaḥstha",
+        articulation: "मूर्धन्य",
+        articulationEnglish: "Mūrdhanya — Retroflex",
+        place: "Roof of Mouth"
+    },
+
+    "ल": {
+        transliteration: "la",
+        varga: "अन्तःस्थ",
+        vargaEnglish: "Antaḥstha",
+        articulation: "दन्त्य",
+        articulationEnglish: "Dantya — Dental",
+        place: "Teeth"
+    },
+
+    "व": {
+        transliteration: "va",
+        varga: "अन्तःस्थ",
+        vargaEnglish: "Antaḥstha",
+        articulation: "ओष्ठ्य",
+        articulationEnglish: "Oṣṭhya — Labial",
+        place: "Lips"
+    },
+
+
+    /* ================= SIBILANTS ================= */
+
+    "श": {
+        transliteration: "śa",
+        varga: "ऊष्म",
+        vargaEnglish: "Ūṣman",
+        articulation: "तालव्य",
+        articulationEnglish: "Tālavya — Palatal",
+        place: "Palate"
+    },
+
+    "ष": {
+        transliteration: "ṣa",
+        varga: "ऊष्म",
+        vargaEnglish: "Ūṣman",
+        articulation: "मूर्धन्य",
+        articulationEnglish: "Mūrdhanya — Retroflex",
+        place: "Roof of Mouth"
+    },
+
+    "स": {
+        transliteration: "sa",
+        varga: "ऊष्म",
+        vargaEnglish: "Ūṣman",
+        articulation: "दन्त्य",
+        articulationEnglish: "Dantya — Dental",
+        place: "Teeth"
+    },
+
+    "ह": {
+        transliteration: "ha",
+        varga: "ऊष्म",
+        vargaEnglish: "Ūṣman",
+        articulation: "कण्ठ्य",
+        articulationEnglish: "Kaṇṭhya — Guttural",
+        place: "Throat"
+    }
+
+};
+
+
+
+/* =====================================================
+   IDENTIFY CONSONANT
+===================================================== */
+
+function identifyConsonant() {
+
+    const input =
+        document
+        .getElementById("consonantInput")
+        .value
+        .trim();
+
+
+    if (input === "") {
+
+        showError(
+            "Please enter a Sanskrit consonant."
+        );
+
+        return;
+
+    }
+
+
+    const character =
+        [...input][0];
+
+
+    const information =
+        consonants[character];
+
+
+    if (!information) {
+
+        showError(
+            "Character not found. Try क, च, ट, त, प, म, य, र, ल, व, श, ष, स or ह."
+        );
+
+        return;
+
+    }
+
+
+    displayResult(
+        character,
+        information
+    );
+
+}
+
+
+
+/* =====================================================
+   DISPLAY RESULT
+===================================================== */
+
+function displayResult(
+    character,
+    information
+) {
+
+    const result =
+        document.getElementById("result");
+
+
+    result.innerHTML = `
+
+        <h2>
+            Identification Result
+        </h2>
+
+
+        <div class="result-letter">
+            ${character}
+        </div>
+
+
+        <div class="result-grid">
+
+
+            <div class="result-item">
+
+                <strong>
+                    Transliteration
+                </strong>
+
+                ${information.transliteration}
+
+            </div>
+
+
+            <div class="result-item">
+
+                <strong>
+                    Varga
+                </strong>
+
+                ${information.varga}
+
+                <br>
+
+                ${information.vargaEnglish}
+
+            </div>
+
+
+            <div class="result-item">
+
+                <strong>
+                    Articulation
+                </strong>
+
+                ${information.articulation}
+
+                <br>
+
+                ${information.articulationEnglish}
+
+            </div>
+
+
+            <div class="result-item">
+
+                <strong>
+                    Place of Articulation
+                </strong>
+
+                ${information.place}
+
+            </div>
+
+
+        </div>
+
+
+        <br>
+
+
+        <button
+            class="identify-btn"
+            onclick="speakText('${character}')">
+
+            🔊 Pronounce ${character}
+
+        </button>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+function showError(message) {
+
+    const result =
+        document.getElementById("result");
+
+
+    result.innerHTML = `
+
+        <h2>
+            ⚠️ Character Not Found
+        </h2>
+
+        <p>
+            ${message}
+        </p>
+
+    `;
+
+}
+
+
+
+/* =====================================================
+   CLEAR RESULT
+===================================================== */
+
+function clearResult() {
+
+    document
+        .getElementById("consonantInput")
+        .value = "";
+
+
+    document
+        .getElementById("result")
+        .innerHTML = `
+
+            <h2>
+                Identification Result
+            </h2>
+
+            <p>
+                Enter a Sanskrit consonant above.
+            </p>
+
+        `;
+
+
+    document
+        .getElementById("speechStatus")
+        .innerText =
+        "Microphone not started.";
+
+}
+
+
+
+/* =====================================================
+   SPEECH RECOGNITION
+===================================================== */
+
+function startSpeechRecognition() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
+    if (!SpeechRecognition) {
+
+        alert(
+            "Speech recognition is not supported by this browser. Please use Google Chrome."
+        );
+
+        return;
+
+    }
+
+
+    const recognition =
+        new SpeechRecognition();
+
+
+    recognition.lang = "hi-IN";
+
+    recognition.continuous = false;
+
+    recognition.interimResults = false;
+
+
+    document
+        .getElementById("speechStatus")
+        .innerText =
+        "🎤 Listening... Speak now.";
+
+
+    try {
+
+        recognition.start();
+
+    }
+
+    catch(error) {
+
+        console.log(error);
+
+    }
+
+
+    recognition.onresult =
+        function(event) {
+
+            const transcript =
+                event.results[0][0]
+                .transcript
+                .trim();
+
+
+            document
+                .getElementById("speechStatus")
+                .innerText =
+                "Recognized: " + transcript;
+
+
+            let foundCharacter = null;
+
+
+            /*
+               Search for a Sanskrit
+               consonant inside the
+               recognized speech.
+            */
+
+            for (
+                const character in consonants
+            ) {
+
+                if (
+                    transcript.includes(character)
+                ) {
+
+                    foundCharacter =
+                        character;
+
+                    break;
+
+                }
+
+            }
+
+
+            if (foundCharacter) {
+
+                document
+                    .getElementById("consonantInput")
+                    .value =
+                    foundCharacter;
+
+
+                displayResult(
+                    foundCharacter,
+                    consonants[foundCharacter]
+                );
+
+            }
+
+            else {
+
+                document
+                    .getElementById("consonantInput")
+                    .value =
+                    transcript;
+
+
+                showError(
+                    "The speech was recognized as: " +
+                    transcript +
+                    ". Try speaking again or type the consonant."
+                );
+
+            }
+
+        };
+
+
+    recognition.onerror =
+        function(event) {
+
+            document
+                .getElementById("speechStatus")
+                .innerText =
+                "❌ Microphone error: " +
+                event.error;
+
+        };
+
+
+    recognition.onend =
+        function() {
+
+            const status =
+                document
+                .getElementById("speechStatus")
+                .innerText;
+
+
+            if (
+                status.includes("Listening")
+            ) {
+
+                document
+                    .getElementById("speechStatus")
+                    .innerText =
+                    "Listening stopped.";
+
+            }
+
+        };
+
+}
+
+
+
+/* =====================================================
+   ENTER KEY SUPPORT
+===================================================== */
+
+document
+    .getElementById("consonantInput")
+    .addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                identifyConsonant();
+
+            }
+
+        }
+    );
+
+
+</script>
+
+
+</body>
+
+</html>
